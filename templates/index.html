@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p>The Next Frontier!</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+    <img src="{{ exploration.featured_image_url }}" >
+    <h2>{text}</h2>
+    <br/>
+    <div class="col-md-8">
+    <img src="{{ exploration.hemisphere_image_urls }}" alt="Hemispheres">
+    </div>
+    <br/>
+
+    
+  </div>
+  </div>
+</body>
+
+</html>
