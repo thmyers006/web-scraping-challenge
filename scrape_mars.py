@@ -11,8 +11,8 @@ from selenium import webdriver
 def init_browser():
     executable_path = {"executable_path" : "C:/Users/thmye/.wdm/drivers/chromedriver/win32/87.0.4280.88/chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
-
-def scrape():
+"""
+def scrape1():
     browser = init_browser()
 
     # visit NASA Mars News website
@@ -25,12 +25,25 @@ def scrape():
     soup = BeautifulSoup(html, 'html.parser')
 
     # Get the latest news and paragraph text
-    results = soup.find_all('div', class_="article_teaser_body")[0].text
-    title_one = soup.find_all('div', class_='content_title')[1].find('a').text
+    results = soup.find('div', class_='article_teaser_body').text
     
-    # Close the browser after scraping
+    title_one = soup.find_all('div', class_='content_title')[1].find('a').text
+
+    mars_data = (
+        title_one,
+        results
+    )
+
     browser.quit()
 
+    return mars_data
+    
+    # Close the browser after scraping
+    
+
+def scrape2():
+    browser = init_browser()
+    
     # visit JPL Mars Space Images web splinter
     url1 = "https://www.jpl.nasa.gov"
     url2 = "https://www.jpl.nasa.gov/spaceimages/?search=featured+&category=Mars#submit"
@@ -52,12 +65,19 @@ def scrape():
         featured = soup.find('figure', class_="lede").find_all('a')[0]['href']
         featured_image_url = url1 + featured 
 
-    # Close the broswer after scraping
     browser.quit()
+    return  featured_image_url  
+    
+    # Close the broswer after scraping
+    
+
+def scrape3():
+    browser = init_browser()
 
     # Visit Mars Facts website
     url3 = 'https://space-facts.com/mars/'
-    
+    time.sleep(1)
+
     # Get the tables from the Mars Facts website
     mars_table = pd.read_html(url3)
 
@@ -69,10 +89,18 @@ def scrape():
     # Code to transform and save pandas dataframe as html
     html_table = df_1.to_html()
     df_1.to_html('table.html')
-     
-    # Close the broswer after scraping
+    #print(html_table) 
+
     browser.quit()
-    
+
+    return html_table 
+
+    # Close the broswer after scraping
+
+"""     
+def scrape4():
+    browser = init_browser()
+
     # Visit the USGS Astrogeology website
     url4 = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url4)
@@ -119,17 +147,15 @@ def scrape():
         browser.back()      
     
     
-    # Close the browser after scraping  
+        # Close the browser after scraping is completed
+        #print(hemisphere_image_urls["title", "img_url"])
+
     browser.quit()
         
-    # Store all Mars data in a dictionary
-    mars_data = {
-        "title" : title_one,
-        "paragraph" : results,
-        "featured photo" : featured_image_url,
-        "Mars facts table" : html_table,
-        "Mars Hemispheres" : hemisphere_image_urls
-        }
+    # Store all Mars info data in a dictionary
+    return hemisphere_image_urls
+    
+        
 
-    return mars_data
+    
 
