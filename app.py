@@ -22,34 +22,26 @@ def home():
 # Route that will call the scrape1 function (NASA data) 
 @app.route("/scrape")  
 def scrape():
-    """
+    
     # Run the scrape function
     scrape_one = scrape_mars.scrape1()
     scrape_two = scrape_mars.scrape2()
     scrape_three = scrape_mars.scrape3() 
-    """   
     scrape_four = scrape_mars.scrape4()
     
     mars_data_db = {
-        #"title" : scrape_one[0],
-        #"paragraph" : scrape_one[1],
-        #"featured_photo" : scrape_two,
-        #"Mars_facts_table" : scrape_three,
+        "title" : scrape_one[0],
+        "paragraph" : scrape_one[1],
+        "featured_photo" : scrape_two,
+        "Mars_facts_table" : scrape_three,
         "Mars_Hemispheres" : scrape_four
         }
 
-
-
     # Update the Mongo database using update and upsert=True
-
-
-    # last change -- update changed to update_many
     mongo.db.collection.update({}, mars_data_db, upsert=True)
 
     # Redirect back to home page
     return redirect("/")
-
-
 
 
 if __name__ == "__main__":

@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="media-container">
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
       <p>The Next Frontier!</p>
@@ -27,36 +28,23 @@
     {{mars_data_db.Mars_facts_table |safe}}
     </div>
     <br/>
-    <div class="col-md-8 text-center">
-    {{ mars_data_db.Mars_Hemispheres }}
-
-    
-    <div class="col-md-12"></div>  
-      <h2 class="jumbotron">Mars Hemispheres</h2>
-      <div>
-          <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
+    <div class="row">
+      
+      <div class="col-md-12 text-center"></div>      
+        <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
         {% for x in range(0,4) %}
           {% for sphere in mars_data_db.Mars_Hemispheres[x] %}
-          <div class="col-md-4">
-              <div class="card" style="width: 40rem;">
-                  <div class="card-body">
-                    <h4 class="card-title">{{sphere.title}}</h4>
-                    <img src="{{sphere.img_url}}">
-                    
-                  </div>
+          <div class="col-md-6 text-center">
+              <div class="media">
+                  <h4 >{{sphere.title}}</h4>
+                  <img src="{{sphere.img_url}}" width=400px height=400px display="webkit-inline-flex">             
               </div>
           </div>
           {% endfor %}
         {% endfor %}
-        
       </div>
-    </div> 
-    
     </div>
-    <br/>
+  </div>
   
-  </div>
-  </div>
 </body>
-
 </html>

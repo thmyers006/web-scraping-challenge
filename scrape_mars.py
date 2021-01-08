@@ -11,7 +11,7 @@ from selenium import webdriver
 def init_browser():
     executable_path = {"executable_path" : "C:/Users/thmye/.wdm/drivers/chromedriver/win32/87.0.4280.88/chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
-"""
+
 def scrape1():
     browser = init_browser()
 
@@ -97,7 +97,7 @@ def scrape3():
 
     # Close the broswer after scraping
 
-"""     
+  
 def scrape4():
     browser = init_browser()
 
