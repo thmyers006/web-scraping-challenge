@@ -28,25 +28,27 @@
     </div>
     <br/>
     <div class="col-md-8 text-center">
-    <!-- {{ mars_data_db.Mars_Hemispheres |safe}} -->
+    {{ mars_data_db.Mars_Hemispheres }}
 
     
     <div class="col-md-12"></div>  
       <h2 class="jumbotron">Mars Hemispheres</h2>
       <div>
-          <!-- write a for loop that lists out your data and accesses the values using dot notation. --> 
-          {% for sphere in mars_data_db.Mars_Hemispheres %}
-          <div class="col-lg-4">
+          <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
+        {% for x in range(0,4) %}
+          {% for sphere in mars_data_db.Mars_Hemispheres[x] %}
+          <div class="col-md-4">
               <div class="card" style="width: 40rem;">
                   <div class="card-body">
-                    <h4 class="card-title">{{ sphere.title }}</h4>
+                    <h4 class="card-title">{{sphere.title}}</h4>
                     <img src="{{sphere.img_url}}">
                     
                   </div>
               </div>
           </div>
-            {% endfor %}
-  
+          {% endfor %}
+        {% endfor %}
+        
       </div>
     </div> 
     

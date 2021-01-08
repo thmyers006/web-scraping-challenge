@@ -44,7 +44,7 @@ def scrape():
 
 
     # last change -- update changed to update_many
-    mongo.db.collection.update_many({}, mars_data_db, upsert=True)
+    mongo.db.collection.update({}, mars_data_db, upsert=True)
 
     # Redirect back to home page
     return redirect("/")
