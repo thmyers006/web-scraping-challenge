@@ -19,7 +19,7 @@ def home():
     # Return template and data
     return render_template("index.html", mars_data_db=mars_data_db)
 
-# Route that will call the scrape1 function (NASA data) 
+# Route that will call the scrape function (get Mars data) 
 @app.route("/scrape")  
 def scrape():
     

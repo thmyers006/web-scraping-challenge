@@ -34,12 +34,11 @@ def scrape1():
         results
     )
 
+    # Close the browser after scraping
     browser.quit()
 
     return mars_data
-    
-    # Close the browser after scraping
-    
+       
 
 def scrape2():
     browser = init_browser()
@@ -65,11 +64,10 @@ def scrape2():
         featured = soup.find('figure', class_="lede").find_all('a')[0]['href']
         featured_image_url = url1 + featured 
 
+    # Close the broswer after scraping
     browser.quit()
     return  featured_image_url  
-    
-    # Close the broswer after scraping
-    
+       
 
 def scrape3():
     browser = init_browser()
@@ -91,11 +89,10 @@ def scrape3():
     df_1.to_html('table.html')
     #print(html_table) 
 
+    # Close the broswer after scraping
     browser.quit()
 
-    return html_table 
-
-    # Close the broswer after scraping
+    return html_table   
 
   
 def scrape4():
@@ -109,14 +106,6 @@ def scrape4():
     # Scrape page into BeautifulSoup
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
-
-    # Get the title links for the hemisphere images
-    mars_hemispheres = []
-    
-    for x in range(0, 4):
-        links = browser.find_by_css("a.product-item h3")[x].text
-        #print(links)
-        mars_hemispheres.append(links)
 
     # Get the image urls for the hemisphere images and the titles
     hemisphere_image_urls = []
@@ -141,15 +130,14 @@ def scrape4():
         #print(hemispheres['img_url'])
         #print(title[0])
     
-        hemisphere_image_urls.append([{"title" : title[0], "img_url" : hemispheres['img_url']}])
+        hemisphere_image_urls.append({"title" : title[0], "img_url" : hemispheres['img_url']})
         #browser.links.find_by_text('Sample')[i].click()
     
-        browser.back()      
-    
-    
-        # Close the browser after scraping is completed
+        browser.back()        
+        
         #print(hemisphere_image_urls["title", "img_url"])
 
+    # Close the browser after scraping is completed
     browser.quit()
         
     # Store all Mars info data in a dictionary
